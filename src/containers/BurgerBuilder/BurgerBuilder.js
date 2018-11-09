@@ -23,11 +23,12 @@ class BurgerBuilder extends Component {
                 meat: 0
             },
             totalPrice: 3,
-            purchasable: false
+            purchasable: false,
+            showModal: false
         };
     }
 
-    updatePurchaseState(ing){
+    updatePurchaseState(ing) {
         const sum = Object.keys(ing)
             .map(ingKey => {
                 return ing[ingKey];
@@ -35,7 +36,7 @@ class BurgerBuilder extends Component {
             .reduce((tot, el) => {
                 return tot + el;
             }, 0);
-        this.setState({purchasable: sum > 0});
+        this.setState({ purchasable: sum > 0 });
     }
 
     addIngredientHandler = (type) => {
@@ -73,24 +74,29 @@ class BurgerBuilder extends Component {
         this.updatePurchaseState(updatedIng);
     }
 
+    showModalHandler = () => {
+        this.setState({ showModal: true });
+    }
+
     render() {
         const disabledInfo = {
             ...this.state.ingredients
         };
-        for(let key in disabledInfo){
+        for (let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0; // [salad: true, bacon: false, ...]
         }
         return (
             <>
-                <Modal>
-                    <OrderSummary ingredients={this.state.ingredients}/>
+                <Modal show={this.state.showModal}>
+                    <OrderSummary ingredients={this.state.ingredients} />
                 </Modal>
                 <Burger ingredients={this.state.ingredients} />
                 <BuildControls addIngredient={this.addIngredientHandler}
-                    removeIngredient={(type) => this.removeIngredientHandler(type)} 
+                    removeIngredient={(type) => this.removeIngredientHandler(type)}
                     disabledInfo={disabledInfo}
                     price={this.state.totalPrice}
-                    purchasable={this.state.purchasable}/>
+                    purchasable={this.state.purchasable}
+                    showModal={this.showModalHandler} />
             </>
         );
     }

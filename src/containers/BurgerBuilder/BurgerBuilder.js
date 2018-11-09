@@ -25,10 +25,7 @@ class BurgerBuilder extends Component {
         };
     }
 
-    updatePurchaseState(){
-        const ing = {
-            ...this.state.ingredients
-        };
+    updatePurchaseState(ing){
         const sum = Object.keys(ing)
             .map(ingKey => {
                 return ing[ingKey];
@@ -52,7 +49,7 @@ class BurgerBuilder extends Component {
             ingredients: updatedIng,
             totalPrice: newPrice
         });
-        this.updatePurchaseState();
+        this.updatePurchaseState(updatedIng);
     }
 
     removeIngredientHandler = (type) => {
@@ -71,7 +68,7 @@ class BurgerBuilder extends Component {
             ingredients: updatedIng,
             totalPrice: newPrice
         });
-        this.updatePurchaseState();
+        this.updatePurchaseState(updatedIng);
     }
 
     render() {

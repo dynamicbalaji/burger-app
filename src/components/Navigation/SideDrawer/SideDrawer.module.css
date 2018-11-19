@@ -20,11 +20,11 @@
 }
 
 .Open {
-    transition: transformX(0); /* Shift sidedrawer to a position defined in default */
+    transform: translateX(0); /* Shift sidedrawer to a position defined in default */
 }
 
 .Close {
-    transition: transformX(-100%); /* Shift sidedrawer to left */
+    transform: translateX(-100%); /* Shift sidedrawer to left */
 }
 
 .Logo {

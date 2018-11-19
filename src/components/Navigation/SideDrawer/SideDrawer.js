@@ -8,7 +8,7 @@ import classes from './SideDrawer.module.css';
 const SideDrawer = (props) => {
     return (
         <>
-            <Backdrop show />
+            <Backdrop show={props.show} closeModal={props.clicked}/>
             <div className={classes.SideDrawer}>
                 <Logo height="11%" className={classes.Logo} />
                 <nav>

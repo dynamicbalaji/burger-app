@@ -26,3 +26,7 @@
 .Close {
     transition: transformX(-100%); /* Shift sidedrawer to left */
 }
+
+.Logo {
+    margin-bottom: 32px;
+}
